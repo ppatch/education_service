@@ -5,8 +5,8 @@ var querystring = require('querystring');
 var url = require('url');
 var https = require('https');
 
-var appId = 'wx2685cc79e51e45a5';
-var appSecret = '25c4469b9acfbb2ebe9b2f30c1d4b2ae';
+var appId = 'wx70197a7eab60c7eb';
+var appSecret = '8d942971af7480fe8d3759184c11b550 ';
 
 var mongoose = require('mongoose');
 require('../models/Users');
@@ -269,5 +269,3 @@ router.post('/message/:_id/answer', function (req, res, next) {
 
 
 module.exports = router;
-
-
