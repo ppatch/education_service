@@ -20,7 +20,7 @@ require('../models/Rewardeds');
 require('../models/Addrewardeds');
 require('../models/Signs');
 require('../models/Answers')
-mongoose.connect('mongodb://10.211.55.3/eduaction');
+mongoose.connect('mongodb://huyugui.f3322.org/eduaction-service');
 
 var User = mongoose.model('User');
 var Activity = mongoose.model('Activity');
@@ -232,7 +232,7 @@ router.get('/weixin', function (request, response) {
                         // Message.find({openid:openid}).populate('user').exec(function (error, result) {
                         //     if (error) next(error)
                         response.writeHead(302, {
-                            "Location": "http://huyugui.f3322.org:8100/#/message?" + querystring.stringify({
+                            "Location": "http://huyugui.f3322.org:8101/#/message" + querystring.stringify({
                                 Openid: openid,
                                 name: _name,
                                 headimgurl: _headimgurl,
@@ -269,3 +269,5 @@ router.post('/message/:_id/answer', function (req, res, next) {
 
 
 module.exports = router;
+
+
