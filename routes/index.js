@@ -20,7 +20,7 @@ require('../models/Rewardeds');
 require('../models/Addrewardeds');
 require('../models/Signs');
 require('../models/Answers')
-mongoose.connect('mongodb://huyugui.f3322.org/eduaction-service');
+mongoose.connect('mongodb://huyugui.f3322.org/eduaction_service');
 
 var User = mongoose.model('User');
 var Activity = mongoose.model('Activity');
@@ -232,7 +232,7 @@ router.get('/weixin', function (request, response) {
                         // Message.find({openid:openid}).populate('user').exec(function (error, result) {
                         //     if (error) next(error)
                         response.writeHead(302, {
-                            "Location": "http://huyugui.f3322.org:8101/#/message" + querystring.stringify({
+                            "Location": "http://huyugui.f3322.org:8102/#/message" + querystring.stringify({
                                 Openid: openid,
                                 name: _name,
                                 headimgurl: _headimgurl,
@@ -249,7 +249,7 @@ router.get('/weixin', function (request, response) {
             next(e);
         });
     } else {
-        response.writeHead(302, {"Location": "http://huyugui.f3322.org:8101/#/message?params=xx"});
+        response.writeHead(302, {"Location": "http://huyugui.f3322.org:8102/#/message?params=xx"});
         response.end();
     }
 })
