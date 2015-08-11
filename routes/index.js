@@ -213,9 +213,8 @@ router.get('/weixin', function (request, response) {
                 var openid = getAccessTokenResult['openid'];
                 console.log('--wx : openid ' + openid);
                 console.log('--wx :access_token' + access_token);
-                console.log('--wx :access_token' + unionid);
-                console.log('--wx :access_token' + unionid);
-                console.log('--wx :access_token' + expires_in);
+                console.log('--wx :unionid' + unionid);
+                console.log('--wx :expires_in' + expires_in);
                 console.log(typeof(openid));
 
                 //用凭证获取用户资料
