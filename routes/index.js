@@ -188,7 +188,7 @@ router.post('/message', function (req, res, next) {
     })
 })
 //获取微信头像
-router.get('/weixin', function (request, response) {
+router.get('/weixin', function (request, response,next) {
     var code;
     //解析参数 获取code
     var getData = url.parse(request.url, true).query;
@@ -211,10 +211,8 @@ router.get('/weixin', function (request, response) {
                 var getAccessTokenResult = JSON.parse(data);
                 var accessToken = getAccessTokenResult['access_token'];
                 var openid = getAccessTokenResult['openid'];
+                console.log('--wx : code' + code);
                 console.log('--wx : openid ' + openid);
-                console.log('--wx :access_token' + access_token);
-                console.log('--wx :unionid' + unionid);
-                console.log('--wx :expires_in' + expires_in);
                 console.log(typeof(openid));
 
                 //用凭证获取用户资料
