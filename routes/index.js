@@ -5,8 +5,8 @@ var querystring = require('querystring');
 var url = require('url');
 var https = require('https');
 
-var appId = 'wx70197a7eab60c7eb';
-var appSecret = '8d942971af7480fe8d3759184c11b550 ';
+var appId='wx70197a7eab60c7eb';
+var appSecret='8d942971af7480fe8d3759184c11b550';
 
 var mongoose = require('mongoose');
 require('../models/Users');
