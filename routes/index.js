@@ -203,6 +203,8 @@ router.get('/weixin', function (request, response,next) {
         var getAccessTokenUrl = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='
             + appId + '&secret=' + appSecret + '&code=' + code + '&grant_type=authorization_code';
 
+        console.log('getAccessTokenUrl' + getAccessTokenUrl);
+
         //请求交换凭证
         https.get(getAccessTokenUrl, function (res) {
             //获取凭证
@@ -227,6 +229,7 @@ router.get('/weixin', function (request, response,next) {
                         var _name = result['nickname'];
                         var _headimgurl = result['headimgurl'];
                         // response.writeHead(200, { "Content-Type": "text/html" });
+                        console.log('--wx : openid ' + openid);
                         console.log('--wx : name' + _name);
                         console.log('--wx : img' + _headimgurl);
 
