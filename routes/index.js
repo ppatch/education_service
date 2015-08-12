@@ -152,7 +152,7 @@ router.get('/weixin', function (request, response,next) {
                         console.log('--wx : name' + _name);
                         console.log('--wx : img' + _headimgurl);
 
-                        response.writeHead(302, { "Location": "http://huyugui.f3322.org:8103/#/newmessage?"+ querystring.stringify({Openid: openid,name: _name,headimgurl: _headimgurl,message: result}) });
+                        response.writeHead(302, { "Location": "http://huyugui.f3322.org:8103/#/home?"+ querystring.stringify({Openid: openid,name: _name,headimgurl: _headimgurl,message: result}) });
                         response.end();
                         // });
                     });
@@ -163,7 +163,7 @@ router.get('/weixin', function (request, response,next) {
             next(e);
         });
     } else {
-        response.writeHead(302, {"Location": "http://huyugui.f3322.org:8103/#/newmessage?params=xx"});
+        response.writeHead(302, {"Location": "http://huyugui.f3322.org:8103/#/home?params=xx"});
         response.end();
     }
 })
@@ -397,7 +397,7 @@ router.post('/weixin', function (req, res, next) {
 })
 //获得微信个人资料
 router.get('/message', function (req, res, next) {
-    Message.find(req.query).populate('user').sort({date: -1}).exec(function (error, result) {
+    Message.find(req.query).populate('Wx').sort({date: -1}).exec(function (error, result) {
         if (error) next(error);
         res.json(result);
     })

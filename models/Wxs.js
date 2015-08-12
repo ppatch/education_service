@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 
 var WxSchema = new mongoose.Schema({
     openid:String,
-    name:String,
+    wxuser:String,
     headurl:String
 })
 
