@@ -13,8 +13,9 @@ var MessageSchema = new mongoose.Schema({
     content:String,
     //回答
     answer:[{answer:String,date:String}],
-    date:String
-    //date:{type:Date,default:Date.now()}
+    date:String,
+    openid:String,
+    wx:[{type:mongoose.Schema.Types.ObjectId,ref:'Wx'}]
 });
 
 mongoose.model('Message',MessageSchema);

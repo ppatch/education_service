@@ -18,6 +18,7 @@ require('../models/Messages');
 require('../models/Rewardeds');
 require('../models/Orders');
 require('../models/Answers');
+require('../models/Wxs');
 
 //mongoose.connect('mongodb://10.211.55.3/eduaction1');
 mongoose.connect('mongodb://huyugui.f3322.org/eduaction_service1');
@@ -31,6 +32,7 @@ var Rewarded = mongoose.model('Rewarded');
 var Activityother = mongoose.model('Activityother');
 var Order = mongoose.model('Order');
 var Answer = mongoose.model('Answer');
+var Wx=mongoose.model('Wx');
 
 
 var one = new User({username: '214', password: '123', name: '陈伟鑫', age: '19', sex: '男', mobile: '13726223011'});
@@ -74,6 +76,7 @@ var sixteen = new Message({
     content: '老师你好，九九乘法表怎样背诵容易记住老师你好，九九乘法表怎样背诵容易记老师你好，九九乘法表怎样背诵容易记',
     date: '15:13'
 });
+
 
 //o1.save();
 //six.save();
@@ -149,18 +152,15 @@ router.get('/weixin', function (request, response,next) {
                         console.log('--wx : name' + _name);
                         console.log('--wx : img' + _headimgurl);
 
-                        // Message.find({openid:openid}).populate('user').exec(function (error, result) {
-                        //     if (error) next(error)
-                        response.writeHead(302, {
-                            "Location": "http://huyugui.f3322.org:8103/#/home?" + querystring.stringify({
-                                Openid: openid,
+                        Message.find(openid).populate('user').exec(function (error, result) {
+                            if (error) next(error);
+                            response.jsonp({
+                                openid: openid,
                                 name: _name,
                                 headimgurl: _headimgurl,
                                 message: result
-                            })
+                            });
                         });
-                        response.end();
-                        //// });
                     });
                 });
             });
@@ -394,5 +394,18 @@ router.delete('/delectdynamic', function (req, res, next) {
         res.json(result);
     })
 })
-
+//储存微信个人资料
+router.post('/weixin', function (req, res, next) {
+    Wx.create(req.body, function (error, result) {
+        if (error) next(error);
+        res.json(result);
+    })
+})
+//获得微信个人资料
+router.get('/message', function (req, res, next) {
+    Message.find(req.query).populate('user').sort({date: -1}).exec(function (error, result) {
+        if (error) next(error);
+        res.json(result);
+    })
+});
 module.exports = router;
