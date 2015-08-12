@@ -20,7 +20,7 @@ require('../models/Orders');
 require('../models/Answers');
 
 //mongoose.connect('mongodb://10.211.55.3/eduaction1');
-mongoose.connect('mongodb://huyugui.f3322.org/eduaction_service');
+mongoose.connect('mongodb://huyugui.f3322.org/eduaction_service1');
 
 var User = mongoose.model('User');
 var Activity = mongoose.model('Activity');
