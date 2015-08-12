@@ -152,7 +152,7 @@ router.get('/weixin', function (request, response,next) {
                         // Message.find({openid:openid}).populate('user').exec(function (error, result) {
                         //     if (error) next(error)
                         response.writeHead(302, {
-                            "Location": "http://huyugui.f3322.org:8102/#/home?" + querystring.stringify({
+                            "Location": "http://huyugui.f3322.org:8103/#/home?" + querystring.stringify({
                                 Openid: openid,
                                 name: _name,
                                 headimgurl: _headimgurl,
@@ -169,7 +169,7 @@ router.get('/weixin', function (request, response,next) {
             next(e);
         });
     } else {
-        response.writeHead(302, {"Location": "http://huyugui.f3322.org:8102/#/home?params=xx"});
+        response.writeHead(302, {"Location": "http://huyugui.f3322.org:8103/#/home?params=xx"});
         response.end();
     }
 })
