@@ -269,7 +269,7 @@ router.post('/liuyan', function (req, res, next) {
 });
 //读取留言
 router.get('/message', function (req, res, next) {
-    Message.find(req.query).populate('user').sort({date: -1}).exec(function (error, result) {
+    Message.find(req.query).populate('wx').sort({date: -1}).exec(function (error, result) {
         if (error) next(error);
         res.json(result);
     })
@@ -397,11 +397,11 @@ router.post('/weixin', function (req, res, next) {
         res.json(result);
     })
 })
-//获得微信个人资料
-router.get('/message', function (req, res, next) {
-    Message.find(req.query).populate('Wx').sort({date: -1}).exec(function (error, result) {
-        if (error) next(error);
-        res.json(result);
-    })
-});
+////获得微信个人资料
+//router.get('/message', function (req, res, next) {
+//    Message.find(req.query).populate('Wx').sort({date: -1}).exec(function (error, result) {
+//        if (error) next(error);
+//        res.json(result);
+//    })
+//});
 module.exports = router;
