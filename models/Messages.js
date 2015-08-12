@@ -6,7 +6,9 @@ var mongoose = require('mongoose');
 
 var MessageSchema = new mongoose.Schema({
     user:[{type:mongoose.Schema.Types.ObjectId,ref:'User'}],
-
+    openid:String,
+    wxuser:String,
+    headurl:String,
     //标题
     title:String,
     //内容
@@ -14,7 +16,6 @@ var MessageSchema = new mongoose.Schema({
     //回答
     answer:[{answer:String,date:String}],
     date:String,
-    openid:String,
     wx:[{type:mongoose.Schema.Types.ObjectId,ref:'Wx'}]
 });
 

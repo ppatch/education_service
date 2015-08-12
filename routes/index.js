@@ -262,6 +262,7 @@ router.post('/addrewardeds', function (req, res, next) {
 
 //存储留言
 router.post('/liuyan', function (req, res, next) {
+    console.log(req.body);
     Message.create(req.body, function (error, result) {
         if (error) next(error);
         res.json(result);
