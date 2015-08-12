@@ -390,7 +390,9 @@ router.delete('/delectdynamic', function (req, res, next) {
 })
 //储存微信个人资料
 router.post('/weixin', function (req, res, next) {
+
     Wx.create(req.body, function (error, result) {
+        console.log(req.body);
         if (error) next(error);
         res.json(result);
     })
