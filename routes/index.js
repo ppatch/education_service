@@ -288,10 +288,10 @@ router.get('/message/:_id', function (req, res) {
 });
 //回复留言
 router.post('/message/:_id/answer', function (req, res, next) {
-
+    console.log(req.body);
     var _id = req.params._id,
         answer = req.body;
-    Message.update({_id: _id}, {$push: {answer: answer}}).exec(function (err, docs) {
+    Message.update({_id: _id}, {$push: {answer: answer}}).populate('user').exec(function (err, docs) {
         res.json({status: 'done'});
     })
 });
