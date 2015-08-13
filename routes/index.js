@@ -270,7 +270,9 @@ router.post('/liuyan', function (req, res, next) {
 });
 //读取留言
 router.get('/message', function (req, res, next) {
-    Message.find(req.query).populate('wx').sort({date: -1}).exec(function (error, result) {
+    Message.find(req.query.openid)
+        console.log(req.query.openid)
+        .sort({date: -1}).exec(function (error, result) {
         if (error) next(error);
         res.json(result);
     })
