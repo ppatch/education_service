@@ -14,7 +14,7 @@ var MessageSchema = new mongoose.Schema({
     //内容
     content:String,
     //回答
-    answer:[{answer:String,date:String}],
+    answer:[{answer:String,date:String,openid:String,wxuser:String,headurl:String}],
     date:String,
     wx:[{type:mongoose.Schema.Types.ObjectId,ref:'Wx'}]
 });
