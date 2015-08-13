@@ -271,12 +271,14 @@ router.post('/liuyan', function (req, res, next) {
 //读取留言
 router.get('/message', function (req, res, next) {
     console.log(req.query.openid)
-    var openid =req.params.openid;
-    Message.findOne({openid:openid})
+    Message.find(req.query.openid)
         .sort({date: -1}).exec(function (error, result) {
-        if (error) next(error);
-        res.json(result);
+            if(error!=null){next(error)}
+            else {
+                res.json(result);
+            }
     })
+
 });
 router.get('/message/:_id', function (req, res) {
     var _id = req.params._id;
@@ -392,15 +394,15 @@ router.delete('/delectdynamic', function (req, res, next) {
         res.json(result);
     })
 })
-//储存微信个人资料
-router.post('/weixin', function (req, res, next) {
-    console.log(req.body);
-    Wx.create(req.body, function (error, result) {
-
-        if (error) next(error);
-        res.json(result);
-    })
-})
+////储存微信个人资料
+//router.post('/weixin', function (req, res, next) {
+//    console.log(req.body);
+//    Wx.create(req.body, function (error, result) {
+//
+//        if (error) next(error);
+//        res.json(result);
+//    })
+//})
 ////获得微信个人资料
 //router.get('/message', function (req, res, next) {
 //    Message.find(req.query).populate('Wx').sort({date: -1}).exec(function (error, result) {
