@@ -268,6 +268,17 @@ router.post('/liuyan', function (req, res, next) {
         res.json(result);
     })
 });
+//读取留言商家端
+router.get('/message1', function (req, res, next) {
+    Message.find(req.query)
+        .sort({date: -1}).exec(function (error, result) {
+            if(error!=null){next(error)}
+            else {
+                res.json(result);
+            }
+        })
+
+});
 //读取留言
 router.get('/message', function (req, res, next) {
     console.log(req.query.openid)
