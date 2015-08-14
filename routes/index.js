@@ -35,7 +35,7 @@ var Answer = mongoose.model('Answer');
 var Wx=mongoose.model('Wx');
 
 
-var one = new User({username: '214', password: '123', name: '蓝天白云培训机构', age: '19', sex: '男', mobile: '13726223011',image:'lantianbaiyun.jpg'});
+var one = new User({username: '214', password: '123', name: '蓝天白云培训机构', age: '19', sex: '男', mobile: '13726223011',image:'1.jpg'});
 var six = new Activity({user: one, title: '课程优惠', kecheng: '数学', teacher: '成老师', time: '8:30~11:30', price: '456元'});
 var six2 = new Activityother({
     title: '课程优惠',
@@ -292,6 +292,7 @@ router.get('/message', function (req, res, next) {
     })
 
 });
+//单条留言
 router.get('/message/:_id', function (req, res) {
     var _id = req.params._id;
     Message.findOne({_id: _id}).exec(function (err, docs) {
@@ -307,6 +308,14 @@ router.post('/message/:_id/answer', function (req, res, next) {
         res.json({status: 'done'});
     })
 });
+//删除留言
+router.delete('/deletemessage', function (req, res, next) {
+    Message.remove({_id: req.query._id}, function (error, result) {
+        console.log(req.body._id);
+        if (error) next(error);
+        res.json(result);
+    })
+})
 //预约报名
 router.post('/order', function (req, res, next) {
     console.log(req.body);
