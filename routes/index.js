@@ -35,7 +35,7 @@ var Answer = mongoose.model('Answer');
 var Wx=mongoose.model('Wx');
 
 
-var one = new User({username: '214', password: '123', name: '陈伟鑫', age: '19', sex: '男', mobile: '13726223011'});
+var one = new User({username: '214', password: '123', name: '蓝天白云培训机构', age: '19', sex: '男', mobile: '13726223011',image:'lantianbaiyun.jpg'});
 var six = new Activity({user: one, title: '课程优惠', kecheng: '数学', teacher: '成老师', time: '8:30~11:30', price: '456元'});
 var six2 = new Activityother({
     title: '课程优惠',
@@ -78,9 +78,9 @@ var sixteen = new Message({
 });
 
 
-//o1.save();
+//one.save();
 //six.save();
-//six2.save();
+//six2.save();imgurl
 
 //one.save();
 //two.save();
