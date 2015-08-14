@@ -271,13 +271,11 @@ router.post('/liuyan', function (req, res, next) {
 //读取留言
 router.get('/message', function (req, res, next) {
     console.log(req.params.openid)
-    var openid=req.params.openid
+    var openid=req.params.openid;
     Message.findOne({openid:openid})
         .sort({date: -1}).exec(function (error, result) {
-            if(error!=null){next(error)}
-            else {
                 res.json(result);
-            }
+
     })
 
 });
